@@ -1,14 +1,16 @@
 package com.zanmust.minialbum;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -22,6 +24,8 @@ import utils.DataHelper;
 import utils.RequestManager;
 
 public class UsersActivity extends AppCompatActivity {
+
+    public static final String EXTRA_USER = "USERID";
 
     ProgressBar mProgressBar;
     ListView mListView;
@@ -45,6 +49,13 @@ public class UsersActivity extends AppCompatActivity {
         } else {
             getUsersFromWeb();
         }
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                showUserAlbums(position);
+            }
+        });
 
 
     }
@@ -81,5 +92,11 @@ public class UsersActivity extends AppCompatActivity {
         mListView.setAdapter(mUserAdapter);
         mListView.deferNotifyDataSetChanged();
         mListView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUserAlbums(int id){
+        Intent mIntent = new Intent(this,AlbumsActivity.class);
+        mIntent.putExtra(EXTRA_USER,id);
+        startActivity(mIntent);
     }
 }

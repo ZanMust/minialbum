@@ -5,8 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 public class DataHelper {
 
@@ -52,6 +52,46 @@ public class DataHelper {
             this.name=name;
             this.username=username;
             this.id=id;
+        }
+
+    }
+    public static class Album {
+
+        public String name;
+        public Photo cover;
+        public int id;
+        public ArrayList<Photo> pictures;
+
+
+
+
+
+
+        public Album(String name, int id, ArrayList<Photo> pictures){
+            this.name=name;
+            this.id=id;
+            this.pictures = pictures;
+            if(pictures.size()!=0){
+                Random mRandom = new Random();
+                cover= pictures.get(mRandom.nextInt(pictures.size()));
+            }
+        }
+
+
+
+
+
+    }
+    public static class Photo {
+
+        public String title;
+        public String url;
+        public String thumbnailUrl;
+
+        public Photo(String title, String url, String thumbnailUrl){
+            this.title = title;
+            this.url = url;
+            this.thumbnailUrl = thumbnailUrl;
         }
 
     }
