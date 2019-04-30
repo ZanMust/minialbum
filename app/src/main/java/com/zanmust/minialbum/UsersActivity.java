@@ -25,7 +25,7 @@ import utils.RequestManager;
 
 public class UsersActivity extends AppCompatActivity {
 
-    public static final String EXTRA_USER = "USERID";
+    public static final String EXTRA_USER = "EXTRA_USERID";
 
     ProgressBar mProgressBar;
     ListView mListView;
@@ -53,7 +53,7 @@ public class UsersActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showUserAlbums(position);
+                showUserAlbums(DataHelper.getInstance().getUserID(position));
             }
         });
 

@@ -37,6 +37,18 @@ public class DataHelper {
         return (ArrayList<User>) mUsers;
     }
 
+    public int getUserID(int i){
+        return mUsers.get(i).id;
+    }
+
+    public void addAlbumToUser(int UserID, ArrayList<Album> albums){
+        for (User user:mUsers
+             ) {
+            if(user.id==UserID){
+                user.setAlbums(albums);
+            }
+        }
+    }
 
 
 
@@ -46,12 +58,17 @@ public class DataHelper {
         public String name;
         public String username;
         public int id;
+        public ArrayList<Album> albums;
 
 
         public User(String name, String username, int id){
             this.name=name;
             this.username=username;
             this.id=id;
+        }
+
+        public void setAlbums(ArrayList<Album> albums){
+            this.albums = albums;
         }
 
     }
