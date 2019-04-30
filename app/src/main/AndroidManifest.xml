@@ -18,9 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlbumsActivity" />
-        <activity android:name=".PhotosActivity" />
-        <activity android:name=".DetailedPhotoActivity"></activity>
+        <activity android:name=".AlbumsActivity" ><meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".UsersActivity" /></activity>
+        <activity android:name=".PhotosActivity" ><meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".AlbumsActivity" /></activity>
+        <activity android:name=".DetailedPhotoActivity"><meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".PhotosActivity" /></activity>
     </application>
 
 </manifest>

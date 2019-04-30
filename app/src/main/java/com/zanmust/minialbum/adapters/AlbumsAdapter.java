@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.zanmust.minialbum.R;
@@ -32,9 +33,12 @@ public class AlbumsAdapter extends ArrayAdapter<DataHelper.Album> {
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         ImageView mCover = (ImageView) convertView.findViewById(R.id.cover);
 
+
         tvName.setText(Album.name);
         if(Album.cover!=null){
             ImageUtils.setImage(Album.cover.thumbnailUrl,mCover);
+            mCover.setVisibility(View.VISIBLE);
+
         }
 
 

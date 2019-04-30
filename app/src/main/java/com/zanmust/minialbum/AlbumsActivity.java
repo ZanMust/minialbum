@@ -3,6 +3,7 @@ package com.zanmust.minialbum;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,11 +36,17 @@ public class AlbumsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
+        UserID = getIntent().getExtras().getInt(UsersActivity.EXTRA_USER);
+
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.Albums)+" "+UserID);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mListView = (ListView) findViewById(R.id.List);
 
-        UserID = getIntent().getExtras().getInt(UsersActivity.EXTRA_USER);
+
 
         getAlbumsFromWeb();
 
@@ -142,6 +149,11 @@ public class AlbumsActivity extends AppCompatActivity {
         mIntent.putExtra(UsersActivity.EXTRA_USER,UserID);
         mIntent.putExtra(EXTRA_ALBUM,id);
         startActivity(mIntent);
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
 

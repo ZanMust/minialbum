@@ -65,7 +65,29 @@ public class DataHelper {
         return null;
     }
 
+    public String getUsername(int UserID){
+        for (User user:mUsers
+                ) {
+            if(user.id==UserID){
+                return user.username;
+            }
+        }
+        return "";
+    }
+    public String getAlbumName(int UserID,int AlbumID){
+        for (User user:mUsers
+                ) {
+            if(user.id==UserID){
+                for (Album al: user.albums
+                        ) {
+                    if(al.id==AlbumID)
+                        return al.name;
 
+                }
+            }
+        }
+        return "";
+    }
 
 
 

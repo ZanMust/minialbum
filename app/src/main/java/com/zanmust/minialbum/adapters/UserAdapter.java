@@ -29,8 +29,8 @@ public class UserAdapter extends ArrayAdapter<DataHelper.User> {
         }
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
-        tvName.setText(user.name);
-        tvUsername.setText(user.username);
+        tvName.setText(getContext().getString(R.string.Name_)+" "+user.name);
+        tvUsername.setText(getContext().getString(R.string.Username_)+" "+user.username);
         return convertView;
     }
 }

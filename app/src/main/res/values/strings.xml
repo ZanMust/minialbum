@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MiniAlbum</string>
+    <string name="Users">Users</string>
+    <string name="Albums">User Albums</string>
+    <string name="Photo">Album</string>
+
+    <string name="Name_">Name: </string>
+    <string name="Username_">Username: </string>
 </resources>
