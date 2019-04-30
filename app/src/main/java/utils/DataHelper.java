@@ -50,6 +50,21 @@ public class DataHelper {
         }
     }
 
+    public ArrayList<Photo> getPicturesFromUserAlbum(int UserID, int AlbumID){
+        for (User user:mUsers
+                ) {
+            if(user.id==UserID){
+                for (Album al: user.albums
+                     ) {
+                    if(al.id==AlbumID)
+                        return al.pictures;
+
+                }
+            }
+        }
+        return null;
+    }
+
 
 
 
@@ -70,6 +85,8 @@ public class DataHelper {
         public void setAlbums(ArrayList<Album> albums){
             this.albums = albums;
         }
+
+
 
     }
     public static class Album {

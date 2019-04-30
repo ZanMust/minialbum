@@ -24,7 +24,7 @@ import utils.RequestManager;
 
 public class AlbumsActivity extends AppCompatActivity {
 
-    private static final String EXTRA_ALBUM = "EXTRA_ALBUMID";
+    public static final String EXTRA_ALBUM = "EXTRA_ALBUMID";
     ProgressBar mProgressBar;
     ListView mListView;
 
@@ -138,7 +138,8 @@ public class AlbumsActivity extends AppCompatActivity {
     }
 
     private void showAlbumPhotos(int id){
-        Intent mIntent = new Intent(this,AlbumsActivity.class);
+        Intent mIntent = new Intent(this,PhotosActivity.class);
+        mIntent.putExtra(UsersActivity.EXTRA_USER,UserID);
         mIntent.putExtra(EXTRA_ALBUM,id);
         startActivity(mIntent);
     }
