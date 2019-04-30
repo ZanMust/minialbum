@@ -15,5 +15,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="TEST !" />
+        android:text="TEST !"
+        android:background="@color/transgray"
+        android:textColor="@android:color/white"/>
 </RelativeLayout>

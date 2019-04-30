@@ -15,17 +15,24 @@ import com.zanmust.minialbum.R;
 import java.util.ArrayList;
 
 import utils.DataHelper;
+import utils.ImageUtils;
 
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder> {
 
     Context mContext;
     ArrayList<DataHelper.Photo> mPhotos;
-    private LayoutInflater mInflater;
 
 
-    public PhotoAdapter(Context context, ArrayList<DataHelper.Photo> photos){
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public PhotoAdapter(Context context, ArrayList<DataHelper.Photo> photos, OnItemClickListener listener){
         mContext=context;
         mPhotos=photos;
+        onItemClickListener=listener;
 
     }
 
@@ -33,10 +40,17 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
         public TextView title;
         public ImageView img;
 
-        public MyViewHolder(View view) {
+        public MyViewHolder(final View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             img = (ImageView) view.findViewById(R.id.img);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(view, getAdapterPosition());
+                }
+            });
+
         }
     }
 
@@ -50,8 +64,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Picasso.get().load(mPhotos.get(position).thumbnailUrl).into(holder.img);
+        ImageUtils.setImageGallery(mPhotos.get(position).thumbnailUrl,holder.img,mContext);
         holder.title.setText(mPhotos.get(position).title);
+
     }
 
 
